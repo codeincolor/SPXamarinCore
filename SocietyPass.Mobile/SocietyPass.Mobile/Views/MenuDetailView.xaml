@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocietyPass.Mobile.Core.Views.MenuDetailView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Cart" Order="Primary" Icon="cart.png" Priority="0" Command="{Binding OrderViewRequestedCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+        <Grid RowSpacing="0" ColumnSpacing="0"
+              AbsoluteLayout.LayoutBounds="0,0,1,.5"
+              AbsoluteLayout.LayoutFlags="All">
+            <Image HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand"
+                   Source="{Binding SelectedMenuItem.DisplayImage}"
+                   Aspect="AspectFill" />
+
+            <Grid Opacity=".5" BackgroundColor="{StaticResource AsphaltDark}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+
+            <StackLayout Padding="10, 10, 10, 35" VerticalOptions="EndAndExpand">
+                <StackLayout Spacing="0" Padding="10" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding SelectedMenuItem.Name}"
+                               FontSize="18"
+                               TextColor="White">
+                        </Label>
+                        <Label Text="{Binding SelectedMenuItem.Price}"
+                                FontSize="18"
+                               TextColor="{StaticResource  GrayLight}" VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <StackLayout Padding="0, 8">
+                        <Label Text="{Binding SelectedMenuItem.Description}"
+                               FontSize="12"
+                               TextColor="{StaticResource GrayLight}" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0.75, 1,AutoSize"
+                         AbsoluteLayout.LayoutFlags="XProportional,YProportional, WidthProportional">
+
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal"
+                             Margin="{StaticResource FoodDetailtPadding}">
+                    <Label TextColor="{StaticResource GrayDark}" VerticalOptions="Center" HorizontalOptions="Center"
+                           FontSize="16" Text="Total price: " />
+                    <Label TextColor="{StaticResource GrayDark}" VerticalOptions="Center" HorizontalOptions="Center"
+                           Text="{Binding TotalPrice}" FontSize="16" />
+                </StackLayout>
+
+                <!--<controls:Divider />-->
+                <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="{DynamicResource Divider}"
+                         HeightRequest="1" />
+                <StackLayout Orientation="Horizontal" Margin="{StaticResource FoodDetailtPadding}" HorizontalOptions="Center">
+                    <Button Image="minus" WidthRequest="30" HeightRequest="15" BackgroundColor="Transparent" Command="{Binding MinusButtonCommand}"/>
+                    <Grid VerticalOptions="Center">
+                        <Frame CornerRadius="8" BackgroundColor="{StaticResource GrayLight}"  HasShadow="False"
+                               OutlineColor="Transparent" WidthRequest="30" />
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label TextColor="Black" x:Name="StepLabel" FontSize="15" Text="{Binding Quantity}" />
+                        </StackLayout>
+                    </Grid>
+                    <Button Image="plus" WidthRequest="30" HeightRequest="15" BackgroundColor="Transparent" Command="{Binding PlusButtonCommand}"/>
+                </StackLayout>
+                <BoxView HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="{DynamicResource Divider}"
+                         HeightRequest="1" />
+          
+            </StackLayout>
+
+            <Button AbsoluteLayout.LayoutBounds=".5, 1, AutoSize, AutoSize" WidthRequest="300"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    HorizontalOptions="Center"
+                    Command="{Binding MenuSelectedCommand}"
+                    Style="{StaticResource PrimaryActionButtonStyle}"
+                    VerticalOptions="EndAndExpand"
+                    Margin="0, 0, 0, 10"
+                    Text="Add Item" />
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

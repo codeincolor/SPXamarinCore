@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocietyPass.Mobile.Core.Views.RestaurantDetailView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:common="clr-namespace: SocietyPass.Mobile.Core.Views;assembly= SocietyPass.Mobile.Core">
+    <ContentPage.Content>
+        <ScrollView Padding="20,20,20,0">
+    <Grid RowSpacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="300" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+                </Grid.RowDefinitions>
+
+     
+            <ffimageloading:CachedImage
+                Grid.Row="0"
+                BackgroundColor="Black"
+                FadeAnimationEnabled="true"
+                Opacity="1"
+                Source="{ Binding  SelectedRestaurant.ProfileImage }"
+                Aspect="AspectFill"
+                HeightRequest="200"
+                Margin="-20,-20,-20,0">
+                <ffimageloading:CachedImage.Transformations>
+                    <fftransformations:BlurredTransformation
+                        Radius="20" />
+                </ffimageloading:CachedImage.Transformations>
+
+                <!--<ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnMovieTapped" />
+                    </ffimageloading:CachedImage.GestureRecognizers>-->
+            </ffimageloading:CachedImage>
+            <ffimageloading:CachedImage
+                Margin="0,-20,0,20"
+                HeightRequest="150"
+                FadeAnimationEnabled="true"
+                Source="{ Binding SelectedRestaurant.ProfileImage }"
+                Aspect="AspectFit"
+                VerticalOptions="Center" />
+
+            <Button  WidthRequest="200"
+                     VerticalOptions="End"
+                     HorizontalOptions="Center"
+                     Text="MENU"
+                     Style="{ StaticResource PrimaryActionButtonStyle }"
+                     TranslationY="22"
+                     Command="{Binding MenuSelectedCommand}"/>
+            <!-- DETAILS -->
+            <StackLayout 
+                Grid.Row="1"
+                Margin="0,30,0,0">
+
+                <Label
+                    Text="{ Binding SelectedRestaurant.Name }"
+                    FontSize="22"
+                    FontAttributes="Bold"
+                    TextColor="{ DynamicResource AccentColor }"
+                    Margin="0,5" />
+                <!--DATA-->
+                <StackLayout>
+                    <Label
+                        Text="$$$"
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Start" />
+                </StackLayout>
+            </StackLayout>
+            <!-- RATING -->
+            <!-- Rating -->
+            <!--<common:Rating
+                Grid.Row="2"
+                Value="4"
+                Scale="0.6"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                TranslationX="-24"
+                TranslationY="-5"/>-->
+        <!-- DESCRIPTION -->
+        <Label
+            Grid.Row="2"
+            Text="{ Binding SelectedRestaurant.Description }"
+            FontSize="12"
+            HorizontalTextAlignment="Start" />
+                <Label Text="Reviews" 
+                       Grid.Row="3"   
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="{ DynamicResource AccentColor }"
+                       Margin="0,5"/>
+        <ListView Grid.Row="4"
+                  ItemsSource="{Binding Reviews}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="20" BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="18" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding User}" Font="Bold" Grid.Column="0" Grid.Row="0" />
+                                <Label Text="{Binding RatingText}" Grid.Column="1" Grid.Row="0" />
+                                <Label Text="{Binding Comment}"  Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="40" />
+                            </Grid>
+                        </StackLayout>
+                       
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        </Grid>
+</ScrollView>
+      
+        <!--<Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="240"/>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="120" />
+                    <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                <Image Source="{Binding SelectedRestaurant.ProfileImage}" Aspect="AspectFill"  Grid.RowSpan="2" />
+
+                <BoxView BackgroundColor="#77000000" Grid.Row="1" />
+                <Grid Margin="1" HeightRequest="230" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    --><!--<BoxView BackgroundColor="#77000000" Grid.RowSpan="2" Grid.ColumnSpan="3"/>--><!--
+                    <Label Text="{Binding SelectedRestaurant.Name}" TextColor="White" Font="Bold" HorizontalOptions="Start" VerticalTextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" HorizontalTextAlignment="Center"/>
+                    <Button Text="Reservation" BackgroundColor="#77000000" BorderRadius="4" BorderColor="White" BorderWidth="2" TextColor="White" Grid.Row="0" Grid.Column="2" />
+                    --><!--<Button Text="Whipped Cream" BackgroundColor="#77000000" BorderRadius="4" BorderColor="White" BorderWidth="2" TextColor="White" Grid.Row="1" Grid.Column="3" />--><!--
+                    <Button Text="About" BackgroundColor="#77000000" BorderRadius="4" BorderColor="White" BorderWidth="2" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Grid.Row="1" Grid.Column="0" />
+                    <Button Text="Menu" BackgroundColor="#77000000" BorderRadius="4" BorderColor="White" BorderWidth="2" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Grid.Row="1" Grid.Column="1" />
+                    <Button Text="Reviews" BackgroundColor="#77000000" BorderRadius="4" BorderColor="White" BorderWidth="2" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Grid.Row="1" Grid.Column="2" />
+                </Grid>
+            </Grid>
+            <StackLayout
+                Grid.Row="1" Padding="5,5,5,5">
+                <Label x:Name="lblDescription"
+                       Text="{Binding SelectedRestaurant.Description}"
+                       HorizontalOptions = "LayoutOptions.FillAndExpand"
+                       IsVisible="True"/>
+            </StackLayout>
+        </Grid>-->
+      
+        <!--<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="5" RowSpacing="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.ColumnSpan="2"  Source="dashboard_thumbnail_18.jpg"
+                    Aspect="AspectFill" HorizontalOptions="FillAndExpand" HeightRequest="250" />
+            <Label Text="{Binding SelectedRestaurant.Name}"
+                   VerticalOptions="EndAndExpand"
+                   HorizontalOptions="Start" ></Label>
+            
+            --><!--<BoxView BackgroundColor="Pink" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>--><!--
+            <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <BoxView BackgroundColor="Purple" HeightRequest="160" Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <BoxView BackgroundColor="Green" Grid.Row="2" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <BoxView BackgroundColor="Yellow" Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+        </Grid>-->
+    </ContentPage.Content>
+</ContentPage>

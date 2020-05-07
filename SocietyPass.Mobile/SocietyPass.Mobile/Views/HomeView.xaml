@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:SocietyPass.Mobile.Core.Templates;assembly=SocietyPass.Mobile.Core"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:ctrls="clr-namespace:SocietyPass.Mobile.Core.Views;assembly=SocietyPass.Mobile.Core-WebAppMainModule..NETStandard,Version=v2.0"
+             xmlns:ctrls1="clr-namespace:SocietyPass.Mobile.Core.Views"
+             x:Class="SocietyPass.Mobile.Core.Views.HomeView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Cart" Order="Primary" Icon="cart.png" Priority="0" Command="{Binding OrderViewRequestedCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>          
+            <Grid
+                Padding="20,0"
+                RowSpacing="15">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="220"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+             
+
+                <!-- Filter -->
+                <Grid
+                    Grid.Row="0"
+                    VerticalOptions="End">
+                    <Picker
+                        Title=""
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start"/>
+
+                    <Label
+                        Text="FILTER"
+                        FontSize="12"
+                        TextColor="{ DynamicResource AccentColor }"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"/>
+                </Grid>
+
+
+                <!-- Separator -->
+                <BoxView
+                    Grid.Row="0"
+                    VerticalOptions="End"
+                    Style="{ DynamicResource Horizontal1ptLineStyle }"/>
+
+
+                <!-- Carousel -->
+                <cv:CarouselViewControl
+                    Grid.Row="1"
+                    HeightRequest="220"
+                    ShowIndicators="true"
+                    Margin="0"
+                    VerticalOptions="Center"
+                    IndicatorsTintColor="{ DynamicResource TranslucidBlack }"
+                    CurrentPageIndicatorTintColor="{ DynamicResource TranslucidWhite }"
+                    ItemsSource="{ Binding RestaurantsTop }">
+
+                    <cv:CarouselViewControl.ItemTemplate>
+                        <DataTemplate>
+                            <templates:HomeCarouselCardItemTemplate/>
+                        </DataTemplate>
+                    </cv:CarouselViewControl.ItemTemplate>
+                </cv:CarouselViewControl>
+
+                <ScrollView Grid.Row="2" Orientation="Horizontal">
+                    <StackLayout Padding="0,0,0,10" Orientation="Horizontal" Spacing="6">
+                        <Image Source="Tai.png" Aspect="AspectFill" />
+                        <Image Source="Chinese.png" Aspect="AspectFill" />
+                        <Image Source="FastFood.png" Aspect="AspectFill" />
+                        <Image Source="American.png" Aspect="AspectFill" />
+                        <Image Source="Pizza.png" Aspect="AspectFill" />
+                    </StackLayout>
+
+                </ScrollView>
+                <!-- List -->
+                <ListView 
+                    Grid.Row="3"
+                    ItemsSource="{ Binding Restaurants }"
+                    SeparatorVisibility="Default"
+                    SeparatorColor="{ DynamicResource ListViewSeparatorColor }"
+                    HasUnevenRows="false"
+                    CachingStrategy="RecycleElement"
+                    RowHeight="225">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <templates:HomeListItemTemplate/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

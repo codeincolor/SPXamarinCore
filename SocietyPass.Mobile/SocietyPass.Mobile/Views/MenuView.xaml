@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocietyPass.Mobile.Core.Views.MenuView"
+             xmlns:behaviors="clr-namespace:SocietyPass.Mobile.Core.Behaviors;assembly=SocietyPass.Mobile.Core"
+             xmlns:templates="clr-namespace:SocietyPass.Mobile.Core.Templates;assembly=SocietyPass.Mobile.Core"
+             Title="Menu">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="8*" />
+        </Grid.RowDefinitions>
+        <Grid 
+            Grid.Row="0">
+            <Image Source="menu_image.jpg" Aspect="AspectFill"></Image>
+            <Grid BackgroundColor="#444444" Opacity="0.8"/>
+            <Label Text="{Binding WelcomeText}" Style="{StaticResource MenuLabelStyle}"/>
+        </Grid>
+        <ListView  Grid.Row="1"
+                   ItemsSource="{Binding MenuItems}" 
+                   VerticalOptions="StartAndExpand"
+                   CachingStrategy="RecycleElement"
+                   SeparatorVisibility="None" 
+                   HasUnevenRows="True">
+            <ListView.Behaviors>
+                <behaviors:EventToCommandBehavior 
+                    EventName="ItemTapped" 
+                    Command="{Binding MenuItemSelectedCommand}" Converter="{StaticResource localItemTappedEventArgsConverter}" >
+                </behaviors:EventToCommandBehavior>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <templates:NavigationMenuItemTemplate />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

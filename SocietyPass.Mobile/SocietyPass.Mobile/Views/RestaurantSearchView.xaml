@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:SocietyPass.Mobile.Core.Behaviors;assembly=SocietyPass.Mobile.Core"
+             xmlns:templates="clr-namespace:SocietyPass.Mobile.Core.Templates;assembly=SocietyPass.Mobile.Core"
+             x:Class="SocietyPass.Mobile.Core.Views.RestaurantSearchView">
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding Restaurants}" 
+                  RowHeight="105">
+            <ListView.Behaviors>
+                <behaviors:EventToCommandBehavior 
+                    EventName="ItemTapped" 
+                    Command="{Binding RestaurantSelectedCommand}" 
+                    Converter="{StaticResource localItemTappedEventArgsConverter}" >
+                </behaviors:EventToCommandBehavior>
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <templates:RestaurantListViewTemplate />
+                    </ViewCell>
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:common="clr-namespace: SocietyPass.Mobile.Core.Views;assembly= SocietyPass.Mobile.Core"
+             x:Class="SocietyPass.Mobile.Core.Templates.RestaurantListViewTemplate">
+  <ContentView.Content>
+     <Grid>
+         <Grid.RowDefinitions>
+             <RowDefinition Height="18" />
+             <RowDefinition Height="55" />
+             <RowDefinition Height="18" />
+         </Grid.RowDefinitions>
+         <Grid.ColumnDefinitions>
+             <ColumnDefinition Width="Auto" />
+             <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+         <Label Grid.ColumnSpan="2" FontAttributes="Bold" FontSize="14" LineBreakMode="TailTruncation" Text="{Binding Name}" />
+            <Image Grid.Row="1" Grid.Column="0" Source="{Binding ProfileImage}" />
+         <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" />
+         <Label
+             Grid.Row="2"
+             Text="$$"
+             FontSize="14"
+             TextColor="{ DynamicResource AccentColor }"
+             VerticalOptions="Center"
+             HorizontalOptions="Start"/>
+
+         <!-- Rating -->
+         <!--<common:Rating
+             Grid.Row="2"
+             Value="4"
+             Scale="0.6"
+             HorizontalOptions="Start"
+             VerticalOptions="End"
+             TranslationX="-24"
+             TranslationY="-5"/>-->
+
+         <!-- Separator -->
+         <BoxView
+             Grid.Row="2"
+             VerticalOptions="End"
+             Style="{ DynamicResource Horizontal1ptLineStyle }"/>
+        </Grid>
+  </ContentView.Content>
+</ContentView>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocietyPass.Mobile.Core.Templates.NavigationMenuItemTemplate">
+  <ContentView.Content>
+      <StackLayout>
+          <Grid ColumnSpacing="12" Padding="10, 10, 0, 10">
+              <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <Image 
+                  Grid.Column="0"
+                  Source="{Binding MenuItemType, Converter={StaticResource localMenuIconConverter}}"
+                  WidthRequest="30" HeightRequest="30" VerticalOptions="Center"/>
+              <Label Grid.Column="1" Text="{Binding Title}" VerticalOptions="Center"/>
+          </Grid>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

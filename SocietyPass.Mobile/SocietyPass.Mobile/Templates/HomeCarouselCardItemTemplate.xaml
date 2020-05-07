@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class=" SocietyPass.Mobile.Core.Templates.HomeCarouselCardItemTemplate">
+    <ContentView.Content>
+        <Grid>
+            <Image
+                Source="{Binding ProfileImage}"
+                Aspect="AspectFill"/>
+            
+            <Label
+                Margin="10,10"
+                TextColor="White"
+                Text="{Binding Name}"
+                FontSize="14"
+                Font="Bold"
+                VerticalOptions="End"
+                HorizontalOptions="Start"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:SocietyPass.Mobile.Core.Templates;assembly=SocietyPass.Mobile.Core"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:behaviors="clr-namespace:SocietyPass.Mobile.Core.Behaviors;assembly=SocietyPass.Mobile.Core"
+             x:Class="SocietyPass.Mobile.Core.Views.RestaurantMenuView"
+             BackgroundColor="{StaticResource MainWrapperBackgroundColor}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Cart" Order="Primary" Icon="cart.png" Priority="0" Command="{Binding OrderViewRequestedCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="280" />
+                <RowDefinition
+                    Height="*" />
+            </Grid.RowDefinitions>
+         
+            <ffimageloading:CachedImage
+                Grid.Row="0"
+                BackgroundColor="Black"
+                FadeAnimationEnabled="true"
+                Opacity="1"
+                Source="{ Binding  SelectedRestaurant.ProfileImage }"
+                Aspect="AspectFill"
+                HeightRequest="200"
+                Margin="-20,-20,-20,0">
+                <ffimageloading:CachedImage.Transformations>
+                    <fftransformations:BlurredTransformation
+                        Radius="20" />
+                </ffimageloading:CachedImage.Transformations>
+
+                <!--<ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnMovieTapped" />
+                    </ffimageloading:CachedImage.GestureRecognizers>-->
+            </ffimageloading:CachedImage>
+            <ffimageloading:CachedImage
+                Margin="0,-20,0,20"
+                HeightRequest="150"
+                FadeAnimationEnabled="true"
+                Source="{ Binding SelectedRestaurant.ProfileImage }"
+                Aspect="AspectFit"
+                VerticalOptions="Center" />
+            <Label Text="{Binding SelectedRestaurant.Name}" FontSize="24" TextColor="White" Font="Bold" VerticalTextAlignment="End" Margin="0,0,0,20" Grid.Row="0" HorizontalTextAlignment="Center"/>
+            <ListView
+                Grid.Row="1"
+                ItemsSource="{ Binding MenuItems }"
+                SeparatorVisibility="Default"
+                SeparatorColor="{ DynamicResource ListViewSeparatorColor }"
+                HasUnevenRows="false"
+                CachingStrategy="RecycleElement"
+                RowHeight="160">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior 
+                        EventName="ItemTapped" 
+                        Command="{Binding MenuSelectedCommand}" 
+                        Converter="{StaticResource localItemTappedEventArgsConverter}" >
+                    </behaviors:EventToCommandBehavior>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:MenuLineItemTemplate/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+       
+    </ContentPage.Content>
+</ContentPage>

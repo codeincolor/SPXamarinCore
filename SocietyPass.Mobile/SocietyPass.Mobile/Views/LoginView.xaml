@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocietyPass.Mobile.Core.Views.LoginView" 
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:controls="clr-namespace:SocietyPass.Mobile.Core.Controls;assembly=SocietyPass.Mobile.Core"             
+             xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared" 
+             xmlns:local="clr-namespace:SocietyPass.Mobile.Core;assembly=SocietyPass.Mobile.Core"
+             >
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Frame HasShadow="True" Grid.Row="1" Grid.RowSpan="2">
+                <StackLayout Margin="0, 30">
+                    <Label Text="Log in" Style="{StaticResource PageHeaderStyle}"></Label>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Not a member? " Style="{StaticResource RegularStyle}"></Label>
+                        <Label Text="Register today!" Style="{StaticResource LinkStyle}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer            
+                                    Command="{Binding RegisterCommand}"  
+                                    NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <controls:RoundedEntry Placeholder="User name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding UserName, Mode=TwoWay}"/>
+                    <controls:RoundedEntry IsPassword="True" Placeholder="Password" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Password, Mode=TwoWay}"/>
+                    <Button Style="{StaticResource RegularButton}" Text="Sign in" Command="{Binding LoginCommand}"></Button>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </Grid>-->
+    <ContentPage.Content>
+        <Grid>
+            <Image Style="{StaticResource StatusBarShimStyle}" />
+            <ScrollView
+				AbsoluteLayout.LayoutBounds="0,0,1,1"
+				AbsoluteLayout.LayoutFlags="All"
+				VerticalOptions="FillAndExpand"
+				Padding="{ StaticResource MainWrapperPadding }">
+
+                <Grid ColumnSpacing="0"
+					RowSpacing="0"
+					Padding="20,30,20,10"
+					HorizontalOptions="Fill"
+					VerticalOptions="FillAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+							Height="Auto" />
+                        <RowDefinition
+							Height="*" />
+                        <RowDefinition
+							Height="Auto" />
+                    </Grid.RowDefinitions>
+
+
+                    <!-- HEADER -->
+                    <StackLayout
+						Grid.Row="0"
+						Spacing="5"
+						Padding="0,20,0,0"
+						InputTransparent="true">
+                        <!-- LOGO -->
+                        <Grid
+							Grid.Row="1"
+							WidthRequest="60"
+							HeightRequest="60"
+							VerticalOptions="Center"
+							HorizontalOptions="Center">
+
+                            <BoxView
+								BackgroundColor="{ DynamicResource AccentColor }"
+								HorizontalOptions="Center"
+								WidthRequest="60" />
+
+                            <!--<Label
+								TextColor="{ DynamicResource OverImageTextColor }"
+								FontSize="42"
+								Text="{ x:Static local:SocietyPassShapesFont.LogoGrial }"
+								Style="{StaticResource FontIcon}"
+								HorizontalOptions="Center"
+								VerticalTextAlignment="Center" />-->
+                            <Image Source="logo.png" WidthRequest="60" HeightRequest="60" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Grid>
+                        <!-- WELCOME TEXT -->
+                        <Label
+							Text="Welcome to the society pass"
+							FontSize="22"
+							HorizontalOptions="Center"
+							TextColor="{ DynamicResource BaseTextColor }" />
+
+                        <!-- USE YOUR CREDENTIALS TEXT -->
+                        
+                        <Label
+							Text="Use your credentials to login."
+                            FontSize="15"
+							HorizontalOptions="Center"
+							 />
+
+                        <!--SEPARATOR-->
+                        <BoxView
+							WidthRequest="80"
+							HeightRequest="1"
+							HorizontalOptions="Center"
+							VerticalOptions="End"
+							BackgroundColor="{DynamicResource BaseTextColor}" />
+                        
+                    </StackLayout>
+
+                    <!---FIELDS CONTAINER-->
+                    <Grid
+						Grid.Row="1"
+						RowSpacing="30"
+						Padding="0,20,0,20"
+						VerticalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+								Width="Auto" />
+                            <ColumnDefinition
+								Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+								Height="*" />
+                            <RowDefinition
+								Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- ICON BACKGROUND -->
+                        <Label
+							Grid.Column="0"
+							Grid.Row="0"
+							FontSize="40"
+							Style="{StaticResource RoundShape}"
+							HorizontalTextAlignment="Center"
+							TextColor="{DynamicResource ComplementColor}"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" />
+
+                        <!-- ICON -->
+                        <Label
+							Grid.Column="0"
+							Grid.Row="0"
+							FontSize="14"
+							Text="{ x:Static local:SocietyPassShapesFont.Email }"
+							Style="{StaticResource FontIcon}"
+							HorizontalTextAlignment="Center"
+							TextColor="White"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" />
+
+                        <!--EMAIL ENTRY-->
+                        <Entry
+							Grid.Column="1"
+							Grid.Row="0"
+							HeightRequest="40"
+							Placeholder="Email"
+							BackgroundColor="{ DynamicResource PlaceholderColorEntry }"
+							PlaceholderColor="{ DynamicResource BaseTextColor }" 
+                            Text="{Binding UserName, Mode=TwoWay}"/>
+
+                        <!-- ICON BACKGROUND -->
+                        <Label
+							Grid.Column="0"
+							Grid.Row="1"
+							FontSize="40"
+							Style="{StaticResource RoundShape}"
+							HorizontalTextAlignment="Center"
+							TextColor="{DynamicResource ComplementColor}"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" />
+
+                        <!-- ICON -->
+                        <Label
+							Grid.Column="0"
+							Grid.Row="1"
+							FontSize="14"
+							Text="{ x:Static local:SocietyPassShapesFont.Lock }"
+							Style="{StaticResource FontIcon}"
+							HorizontalTextAlignment="Center"
+							TextColor="White"
+							VerticalOptions="Center"
+							HorizontalOptions="Center" />
+
+                        <!-- PASSWORD ENTRY -->
+                        <Entry
+							Grid.Column="1"
+							Grid.Row="1"
+							HeightRequest="40"
+							Placeholder="Password"
+							IsPassword="True"
+							BackgroundColor="{ DynamicResource PlaceholderColorEntry }"
+							PlaceholderColor="{ DynamicResource BaseTextColor }" 
+                            Text="{Binding Password, Mode=TwoWay}"/>
+
+                    </Grid>
+                    <!-- BUTTONS -->
+                    <StackLayout
+						Grid.Row="2"
+						Spacing="10"
+						Padding="0,10,0,0"
+						HorizontalOptions="FillAndExpand"
+						VerticalOptions="End">
+
+                        <!-- LOGIN BUTTON-->
+                        <!--<artina:Button
+							Style="{StaticResource PrimaryActionButtonStyle}"
+							VerticalOptions="End"
+							Text="Login"
+							WidthRequest="200"
+							HorizontalOptions="Fill" />-->
+                        <Button 
+                            Style="{StaticResource PrimaryActionButtonStyle}"
+							VerticalOptions="End"
+							Text="Login"
+							WidthRequest="200"
+							HorizontalOptions="Fill"
+                            Margin="0, 0, 0, 10"
+                            Command="{Binding LoginCommand}"/>
+                        <!--<Label
+							Text="{ artina:Translate LabelOrConnectWith }"
+							FontSize="13"
+							HorizontalOptions="Center" />-->
+
+                        <!-- FACEBOOK --><!--
+                        <artina:Button
+							BackgroundColor="#3b5998"
+							TextColor="{ DynamicResource OverImageTextColor }"
+							VerticalOptions="End"
+							Text="{ artina:Translate StringFacebook }"
+							WidthRequest="{ artina:OnOrientationDouble
+								LandscapePhone=200,
+								LandscapeTablet=400 }"
+							HorizontalOptions="{ artina:OnOrientationLayoutOptions
+								PortraitPhone=Fill,
+								LandscapePhone=Center,
+								PortraitTablet=Fill,
+								LandscapeTablet=Center }" />
+
+                        --><!-- TWITTER --><!--
+                        <artina:Button
+							BackgroundColor="#1DA1F2"
+							TextColor="{ DynamicResource OverImageTextColor }"
+							VerticalOptions="End"
+							Text="{ artina:Translate StringTwitter }"
+							WidthRequest="{ artina:OnOrientationDouble
+								LandscapePhone=200,
+								LandscapeTablet=400 }"
+							HorizontalOptions="{ artina:OnOrientationLayoutOptions
+								PortraitPhone=Fill,
+								LandscapePhone=Center,
+								PortraitTablet=Fill,
+								LandscapeTablet=Center }" />
+
+                        --><!--SEPARATOR--><!--
+                        <BoxView
+							Grid.Row="4"
+							HeightRequest="1"
+							VerticalOptions="Start"
+							HorizontalOptions="Center"
+							WidthRequest="300"
+							BackgroundColor="{DynamicResource BaseTextColor}" />
+
+                        <Label
+							Grid.Row="4"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							FontSize="14"
+							Text="{ artina:Translate LabelForgotYourPassword }" />-->
+
+                    </StackLayout>
+                </Grid>
+                
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

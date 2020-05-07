@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:local="clr-namespace:SocietyPass.Mobile.Core.Views;assembly=SocietyPass.Mobile.Core"
+             x:Class="SocietyPass.Mobile.Core.Templates.MenuLineItemTemplate"
+             BackgroundColor="{ DynamicResource BasePageColor }">
+  <ContentView.Content>
+        <Grid
+			Padding="15"
+			RowSpacing="5"
+			ColumnSpacing="15">
+            <Grid.RowDefinitions>
+                <RowDefinition
+					Height="Auto" />
+                <RowDefinition
+					Height="*" />
+                <RowDefinition
+					Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+					Width="*" />
+                <ColumnDefinition
+					Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- TITLE -->
+            <Label
+				Grid.Row="0"
+				Grid.Column="0"
+				Grid.ColumnSpan="2"
+				Text="{ Binding Name }"
+				FontAttributes="Bold"
+				FontSize="14"
+				LineBreakMode="TailTruncation"
+				TextColor="{ DynamicResource AccentColor }" />
+
+            <!-- IMAGE -->
+            <ffimageloading:CachedImage
+				Grid.Row="1"
+				Grid.Column="0"
+				Grid.RowSpan="2"
+				FadeAnimationEnabled="true"
+				TranslationY="5"
+				Source="{ Binding DisplayImage }"
+				HeightRequest="100"
+				VerticalOptions="StartAndExpand"
+				Aspect="AspectFill" />
+
+            <!-- ARTICLE -->
+            <Label
+				Grid.Row="1"
+				Grid.Column="1"
+				Text="{ Binding Description }"
+				FontSize="12"
+				HeightRequest="50" />
+
+            <!-- FOOTER -->
+            <StackLayout
+				Grid.Row="2"
+				Grid.Column="1"
+				VerticalOptions="End"
+				Orientation="Horizontal">
+                <Label
+					Text="Price:"
+					FontSize="12"
+					VerticalOptions="Center"
+					TextColor="{DynamicResource AccentColor}" />
+                <Label
+					Text="{ Binding Price }"
+					Opacity=".7"
+					FontSize="12"
+					HorizontalOptions="FillAndExpand" />
+
+            </StackLayout>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

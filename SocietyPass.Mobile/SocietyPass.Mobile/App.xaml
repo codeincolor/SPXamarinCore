@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:SocietyPass.Mobile.Core.Converters;assembly=SocietyPass.Mobile.Core"
+             xmlns:controls="clr-namespace:SocietyPass.Mobile.Core.Controls;assembly=SocietyPass.Mobile.Core"   
+             xmlns:styles="clr-namespace:SocietyPass.Mobile.Core.Styles;assembly=SocietyPass.Mobile.Core"
+             xmlns:local="clr-namespace:SocietyPass.Mobile.Core;assembly=SocietyPass.Mobile.Core"
+             xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared" 
+             x:Class="SocietyPass.Mobile.Core.App">
+    <Application.Resources>        
+        <converters:DoNothingConverter x:Key="localDoNothingConverter"></converters:DoNothingConverter>
+        <converters:MenuIconConverter x:Key="localMenuIconConverter"></converters:MenuIconConverter>
+        <converters:ItemTappedEventArgsToSelectedItemConverter x:Key="localItemTappedEventArgsConverter"></converters:ItemTappedEventArgsToSelectedItemConverter>
+        <converters:CurrencyConverter x:Key="LocalCurrencyConverter"></converters:CurrencyConverter>
+
+        <!-- UNITS -->
+        <x:Double x:Key="BaseFontSize">14</x:Double>
+        <x:Double x:Key="BaseButtonHeight">44</x:Double>
+        <x:Double x:Key="BaseButtonBorderRadius">22</x:Double>
+        <x:Double x:Key="MainMenuLabelFontsize">18</x:Double>
+        <x:Double x:Key="MainMenuIconFontsize">20</x:Double>
+        <x:Double x:Key="MainMenuHeaderFontsize">18</x:Double>
+        <x:Double x:Key="MainMenuLabelTranslationX">10</x:Double>
+        <x:Double x:Key="MainMenuChevronRightFontsize">24</x:Double>
+        <x:Double x:Key="MainMenuIconWidthRequest">22</x:Double>
+
+        <!-- STATIC IMAGES -->
+        <FileImageSource
+				x:Key="HamburguerIcon">hamburguer_icon.png</FileImageSource>
+        <FileImageSource
+				x:Key="WelcomeBackgroundImagePhone">welcome_bg.jpg</FileImageSource>
+        <FileImageSource
+				x:Key="WelcomeBackgroundImageTablet">welcome_bg_tablet.jpg</FileImageSource>
+
+
+        <FileImageSource
+				x:Key="BrandImage">logo.png</FileImageSource>
+
+        <FileImageSource
+				x:Key="GenericBackgroundImage">generic_bg_image.jpg</FileImageSource>
+
+        <FileImageSource
+				x:Key="SignUpBackgroundImagePhone">signup_bg.jpg</FileImageSource>
+        <FileImageSource
+				x:Key="SignUpBackgroundImageTablet">signup_bg_tablet.jpg</FileImageSource>
+
+        <FileImageSource
+				x:Key="LoginBackgroundImagePhone">login_bg.jpg</FileImageSource>
+        <FileImageSource
+				x:Key="LoginBackgroundImageTablet">login_bg_tablet.jpg</FileImageSource>
+
+        <FileImageSource
+				x:Key="PasswordRecoveryBackgroundImagePhone">pass_recovery_bg.jpg</FileImageSource>
+        <FileImageSource
+				x:Key="PasswordRecoveryBackgroundImageTablet">pass_recovery_bg_tablet.jpg</FileImageSource>
+
+        <FileImageSource
+				x:Key="WalkthroughStepGenericPhoneBackgroundImage">walkthrough_generic_phone_bg.png</FileImageSource>
+
+        <FileImageSource
+				x:Key="ThemeAvatarSample0Image">user_profile_0.jpg</FileImageSource>
+        <FileImageSource
+				x:Key="ThemeAvatarSample1Image">user_profile_1.jpg</FileImageSource>
+
+        <FileImageSource
+				x:Key="SocialHeaderBackgroundImage0">social_header_bg_0.jpg</FileImageSource>
+        <FileImageSource
+				x:Key="SocialHeaderBackgroundImage1">social_header_bg_1.jpg</FileImageSource>
+
+        <OnPlatform
+				x:Key="GrialShapesFontFamily"
+				x:TypeArguments="x:String"
+				Android="grialshapes.ttf#grialshapes"
+				iOS="grialshapes" />
+
+        <!--  ICON FONT FAMILY  -->
+        <OnPlatform
+				x:Key="IconsFontFamily"
+				x:TypeArguments="x:String"
+				Android="grialshapes.ttf#grialshapes"
+				iOS="grialshapes" />
+
+        <OnPlatform x:Key="LargeFontSize"
+                    x:TypeArguments="x:Double"
+                    iOS="16"
+                    Android="18" />
+
+        <OnPlatform x:Key="MediumFontSize"
+                    x:TypeArguments="x:Double"
+                    iOS="14"
+                    Android="16" />
+
+        <OnPlatform x:Key="SmallFontSize"
+                    x:TypeArguments="x:Double"
+                    iOS="11"
+                    Android="11" />
+
+        <OnPlatform x:Key="FoodDetailtPadding" 
+                    x:TypeArguments="Thickness" 
+                    Android="15" 
+                    iOS="15" />
+        <OnPlatform x:Key="Divider" 
+                    x:TypeArguments="Color" 
+                    Android="#ECECEC" 
+                    iOS="#C8C7CC" />
+
+        <!--<ResourceDictionary Source="Styles/SocietyPassTheme.xaml"/>-->
+        <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <styles:SocietyPassTheme />
+        </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+       
+        
+
+        <Color x:Key="MainColor">#50d2c2</Color>
+        <Color x:Key="DarkBlue">#333f50</Color>
+        <Color x:Key="HeaderGrey">#aaaaaa</Color>
+        <Color x:Key="PlainGrey">#aaaaaa</Color>
+        <Color x:Key="LightGrey">#cccccc</Color>
+        <Color x:Key="EntryGrey">Gray</Color>
+        <Color x:Key="LightForeground">White</Color>
+        <Color x:Key="GrayDark">#76828A</Color>
+
+        <Color x:Key="AsphaltDark">#1C2B39</Color>
+        <Color x:Key="GrayLight">#ECF0F1</Color>
+        <Color x:Key="badgeColor">#4caf50</Color>
+
+        <x:Double x:Key="SmallPadding">4</x:Double>
+        <x:Double x:Key="MediumPadding">8</x:Double>
+        <x:Double x:Key="StandardPadding">16</x:Double>
+        
+
+        <Thickness x:Key="SmallTopThickness" Top="{StaticResource SmallPadding}" />
+
+        <Thickness x:Key="MediumTopThickness" Top="{StaticResource MediumPadding}" />
+
+        <Thickness x:Key="StandardTopThickness" Top="{StaticResource StandardPadding}" />
+
+        <Thickness x:Key="SmallThickness"
+                   Bottom="{StaticResource SmallPadding}"
+                   Left="{StaticResource SmallPadding}"
+                   Right="{StaticResource SmallPadding}"
+                   Top="{StaticResource SmallPadding}" />
+
+        <Thickness x:Key="MediumThickness"
+                   Bottom="{StaticResource MediumPadding}"
+                   Left="{StaticResource MediumPadding}"
+                   Right="{StaticResource MediumPadding}"
+                   Top="{StaticResource MediumPadding}" />
+
+        <Thickness x:Key="StandardThickness"
+                   Bottom="{StaticResource StandardPadding}"
+                   Left="{StaticResource StandardPadding}"
+                   Right="{StaticResource StandardPadding}"
+                   Top="{StaticResource StandardPadding}" />
+
+        <Style x:Key="MenuLabelStyle" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="{StaticResource LargeFontSize}"></Setter>
+            <Setter Property="TextColor" Value="{StaticResource HeaderGrey}"></Setter>
+            <Setter Property="VerticalOptions" Value="End"></Setter>
+            <Setter Property="HorizontalOptions" Value="Start"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+
+        <Style x:Key="PageHeaderStyle" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="{StaticResource LargeFontSize}"></Setter>
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{StaticResource HeaderGrey}" />
+        </Style>
+
+
+        <Style x:Key="RegularStyle" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{StaticResource PlainGrey}" />
+        </Style>
+
+        <Style x:Key="LinkStyle" TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="{StaticResource DarkBlue}" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+
+        <Style x:Key="RoundedEntryStyle" TargetType="{x:Type controls:RoundedEntry}">
+            <Setter Property="CornerRadius" Value="3"></Setter>
+            <Setter Property="IsCurvedCornersEnabled" Value="True"></Setter>
+            <Setter Property="BorderColor" Value="{StaticResource LightGrey}"></Setter>
+            <Setter Property="HorizontalTextAlignment" Value="Start"></Setter>
+            <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"></Setter>
+            <Setter Property="HeightRequest" Value="30"></Setter>
+            <Setter Property="PlaceholderColor" Value="{StaticResource PlainGrey}"></Setter>
+            <Setter Property="TextColor" Value="{StaticResource EntryGrey}"></Setter>
+        </Style>
+
+
+        <Style x:Key="RegularButton" TargetType="{x:Type Button}">
+            <Setter Property="BackgroundColor" Value="{StaticResource MainColor}"></Setter>
+            <Setter Property="TextColor" Value="{StaticResource LightForeground}"></Setter>
+        </Style>
+
+        <!-- BASE STYLES -->
+        <Style
+				x:Key="FontIcon"
+				TargetType="Label">
+            <Setter
+					Property="FontFamily"
+					Value="{ StaticResource IconsFontFamily }" />
+        </Style>
+
+        <Style
+				x:Key="FontIconBase"
+				TargetType="Label">
+            <Setter
+					Property="FontFamily"
+					Value="{ StaticResource GrialShapesFontFamily }" />
+        </Style>
+
+        <Style
+				x:Key="RoundedButtonStyle"
+				TargetType="Button">
+            <Setter
+					Property="FontSize"
+					Value="{StaticResource BaseFontSize}" />
+            <Setter
+					Property="BorderRadius"
+					Value="22" />
+            <Setter
+					Property="HeightRequest"
+					Value="{StaticResource BaseButtonHeight}" />
+        </Style>
+
+        <Style
+				x:Key="Horizontal1ptLineStyle"
+				TargetType="BoxView">
+            <Setter
+					Property="HeightRequest"
+					Value="1" />
+            <Setter
+					Property="BackgroundColor"
+					Value="#11000000" />
+        </Style>
+
+        <Style
+				x:Key="StatusLabelStyle"
+				TargetType="Label">
+            <Setter
+					Property="Text"
+					Value=" AVAILABLE " />
+            <Setter
+					Property="VerticalOptions"
+					Value="End" />
+            <Setter
+					Property="HorizontalOptions"
+					Value="Start" />
+            <Setter
+					Property="FontSize"
+					Value="14" />
+        </Style>
+
+        <!-- LOGINS STYLES -->
+        <Style
+				x:Key="SignUpBackgroundImage"
+				TargetType="Image">
+            <Setter
+					Property="Aspect"
+					Value="AspectFill" />
+            <Setter
+					Property="Source">
+                <Setter.Value>
+                    <OnIdiom
+							x:TypeArguments="ImageSource"
+							Phone="{ StaticResource SignUpBackgroundImagePhone }"
+							Tablet="{ StaticResource LoginBackgroundImageTablet }" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style
+				x:Key="LoginBackgroundImage"
+				TargetType="Image">
+            <Setter
+					Property="Aspect"
+					Value="AspectFill" />
+            <Setter
+					Property="Source">
+                <Setter.Value>
+                    <OnIdiom
+							x:TypeArguments="ImageSource"
+							Phone="{ StaticResource LoginBackgroundImagePhone }"
+							Tablet="{ StaticResource LoginBackgroundImageTablet }" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style
+				x:Key="PasswordRecoveryBackgroundImage"
+				TargetType="Image">
+            <Setter
+					Property="Aspect"
+					Value="AspectFill" />
+            <Setter
+					Property="Source">
+                <Setter.Value>
+                    <OnIdiom
+							x:TypeArguments="ImageSource"
+							Phone="{ StaticResource PasswordRecoveryBackgroundImagePhone }"
+							Tablet="{ StaticResource LoginBackgroundImageTablet }" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style
+				x:Key="PrimaryActionButtonStyle"
+				TargetType="Button"
+				BasedOn="{StaticResource RoundedButtonStyle}">
+            <Setter
+					Property="BackgroundColor"
+					Value="{DynamicResource AccentColor}" />
+            <Setter
+					Property="TextColor"
+					Value="{DynamicResource LabelButtonColor}" />
+            <Setter
+					Property="HeightRequest"
+					Value="{StaticResource BaseButtonHeight}" />
+        </Style>
+
+        <Style
+				x:Key="SecondaryActionButtonStyle"
+				TargetType="Button"
+				BasedOn="{StaticResource RoundedButtonStyle}">
+            <Setter
+					Property="BackgroundColor"
+					Value="{DynamicResource ComplementColor}" />
+            <Setter
+					Property="TextColor"
+					Value="{DynamicResource LabelButtonColor}" />
+            <Setter
+					Property="HeightRequest"
+					Value="{StaticResource BaseButtonHeight}" />
+        </Style>
+
+        <Style
+				x:Key="TransparentButtonStyle"
+				TargetType="Button"
+				BasedOn="{StaticResource RoundedButtonStyle}">
+            <Setter
+					Property="BackgroundColor"
+					Value="Transparent" />
+            <Setter
+					Property="TextColor"
+					Value="{DynamicResource LabelButtonColor}" />
+            <Setter
+					Property="HeightRequest"
+					Value="{StaticResource BaseButtonHeight}" />
+        </Style>
+
+
+      
+        <!-- COMMON -->
+        <Style
+				x:Key="AvailableStatusStyle"
+				TargetType="Label"
+				BasedOn="{StaticResource StatusLabelStyle}">
+            <Setter
+					Property="BackgroundColor"
+					Value="{DynamicResource OkColor}" />
+            <Setter
+					Property="TextColor"
+					Value="White" />
+        </Style>
+
+        <Style
+				x:Key="RoundShape"
+				TargetType="Label"
+				BasedOn="{ StaticResource FontIconBase }">
+            <Setter
+					Property="Text"
+					Value="{ x:Static local:SocietyPassShapesFont.Circle }" />
+        </Style>
+
+        <!-- STATUS BAR GRADIENT -->
+        <Style
+				x:Key="StatusBarShimStyle"
+				TargetType="Image">
+            <Setter
+					Property="Source"
+					Value="status_bar_gradient.png" />
+            <Setter
+					Property="VerticalOptions"
+					Value="Start" />
+            <Setter
+					Property="HorizontalOptions"
+					Value="FillAndExpand" />
+            <Setter
+					Property="Aspect"
+					Value="Fill" />
+            <Setter
+					Property="HeightRequest"
+					Value="44" />
+        </Style>
+
+       
+
+        <!-- RESPONSIVE COMMON -->
+        <OnIdiom
+				x:Key="MainWrapperPadding"
+				x:TypeArguments="Thickness"
+                Phone="0"
+                Tablet="100,0,100,0"></OnIdiom>
+        <!-- END RESPONSIVE COMMON -->
+    </Application.Resources>
+</Application>

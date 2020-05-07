@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SocietyPass.Mobile.Core.Controls;assembly=SocietyPass.Mobile.Core"
+             x:Class="SocietyPass.Mobile.Core.Views.RegisterView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Frame HasShadow="True" Grid.Row="1" Grid.RowSpan="2">
+                <StackLayout Margin="0, 30">
+                    <Label Text="Register" Style="{StaticResource PageHeaderStyle}"></Label>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Already a member? " Style="{StaticResource RegularStyle}"></Label>
+                        <Label Text="Sign in!" Style="{StaticResource LinkStyle}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer            
+                                    Command="{Binding LoginCommand}"  
+                                    NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <controls:RoundedEntry Placeholder="User name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding UserName, Mode=TwoWay}"/>
+                    <controls:RoundedEntry Placeholder="First name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding FirstName, Mode=TwoWay}"/>
+                    <controls:RoundedEntry Placeholder="Last name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding LastName, Mode=TwoWay}"/>
+                    <controls:RoundedEntry Placeholder="Email" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Email, Mode=TwoWay}"/>
+                    <controls:RoundedEntry IsPassword="True" Placeholder="Password" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Password, Mode=TwoWay}"/>
+                    <Button Style="{StaticResource RegularButton}" Text="Join now" Command="{Binding RegisterCommand}"></Button>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>

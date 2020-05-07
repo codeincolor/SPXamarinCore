@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class=" SocietyPass.Mobile.Core.Templates.HomeRepeaterCardItemTemplate">
+    <ContentView.Content>
+        <Grid>
+            <Image
+                Source="https://format-com-cld-res.cloudinary.com/image/private/s--4ieGpflq--/c_limit,g_center,h_700,w_65535/a_auto,fl_keep_iptc.progressive,q_95/v1/09035521cb0b7093e3e8f8e797e4f636/food_photography_italian_spaghetti.jpg"
+                Aspect="AspectFill"/>
+            
+            <Label
+                Margin="10,10"
+                Text="THAI"
+                FontSize="12"
+                VerticalOptions="End"
+                HorizontalOptions="Start"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

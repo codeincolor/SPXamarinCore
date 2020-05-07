@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SocietyPass.Mobile.Core.Views.MainView"
+             xmlns:pages="clr-namespace:SocietyPass.Mobile.Core.Views"
+                  Title="Main">
+    <MasterDetailPage.Master>
+        <pages:MenuView BindingContext="{Binding MenuViewModel}"></pages:MenuView>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage  />
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
